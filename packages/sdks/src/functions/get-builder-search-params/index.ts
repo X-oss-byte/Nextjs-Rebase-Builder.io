@@ -1,0 +1,41 @@
+import { isBrowser } from '../is-browser';
+
+const BUILDER_SEARCHPARAMS_PREFIX = 'builder.';
+
+type QueryObject = Record<string, string>;
+
+export const convertSearchParamsToQueryObject = (
+  searchParams: URLSearchParams
+): QueryObject => {
+  const options: Record<string, string> = {};
+  searchParams.forEach((value, key) => {
+    options[key] = value;
+  });
+  return options;
+};
+
+export const getBuilderSearchParams = (options: QueryObject) => {
+  const newOptions: QueryObject = {};
+  Object.keys(options).forEach((key) => {
+    if (key.startsWith(BUILDER_SEARCHPARAMS_PREFIX)) {
+      const trimmedKey = key.replace(BUILDER_SEARCHPARAMS_PREFIX, '');
+      newOptions[trimmedKey] = options[key];
+    }
+  });
+  return newOptions;
+};
+
+export const getBuilderSearchParamsFromWindow = () => {
+  if (!isBrowser()) {
+    return {};
+  }
+  const searchParams = new URLSearchParams(window.location.search);
+  return getBuilderSearchParams(convertSearchParamsToQueryObject(searchParams));
+};
+
+export const normalizeSearchParams = (
+  searchParams: QueryObject | URLSearchParams
+): QueryObject =>
+  searchParams instanceof URLSearchParams
+    ? convertSearchParamsToQueryObject(searchParams)
+    : searchParams;
