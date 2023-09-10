@@ -1,0 +1,15 @@
+node_modules
+output/
+jest.config.js
+.eslintrc.js
+mitosis.config.js
+tsconfig.json
+**/vite.config.ts
+**/dist/**
+
+e2e/qwik/server/
+e2e/rsc/
+
+**/playwright-report/*
+**/test-results/*
+**/vite.config.ts.timestamp-*

@@ -1,0 +1,32 @@
+{
+  "name": "@builder.io/sdk-react",
+  "description": "Builder.io SDK for React",
+  "version": "0.1.9",
+  "main": "src/index.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/react/index.js",
+      "require": "./dist/react/index.js"
+    },
+    "./rsc": {
+      "import": "./dist/rsc/index.js",
+      "require": "./dist/rsc/index.js"
+    }
+  },
+  "scripts": {
+    "build:react": "tsc -p ./tsconfig.react.json",
+    "build:rsc": "tsc -p ./tsconfig.rsc.json",
+    "build": "yarn run build:react && yarn run build:rsc",
+    "release:patch": "yarn run build && npm version patch && npm publish",
+    "release:minor": "yarn run build && npm version minor && npm publish",
+    "release:dev": "yarn run build && npm version prerelease && npm publish --tag dev"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "react": "^18.2.0",
+    "typescript": "^4.9.4"
+  }
+}
