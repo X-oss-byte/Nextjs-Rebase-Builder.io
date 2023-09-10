@@ -1,0 +1,42 @@
+{
+  "name": "@builder.io/sdk-vue",
+  "description": "Builder.io SDK for Vue",
+  "version": "0.0.1-69",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "main": "./vue2/src/index.js",
+  "module": "./vue2/src/index.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./vue2/src/index.js",
+      "require": "./vue2/src/index.js"
+    },
+    "./vue2": {
+      "import": "./vue2/src/index.js",
+      "require": "./vue2/src/index.js"
+    },
+    "./vue3": {
+      "import": "./vue3/src/index.js",
+      "require": "./vue3/src/index.js"
+    },
+    "./nuxt": {
+      "import": "./nuxt.js",
+      "require": "./nuxt.js"
+    },
+    "./nuxt2": {
+      "import": "./nuxt.js",
+      "require": "./nuxt.js"
+    }
+  },
+  "scripts": {
+    "release:dev": "npm version prerelease --no-git-tag-version && npm publish --tag dev --access public"
+  },
+  "peerDependencies": {
+    "vue": ">= 2"
+  },
+  "devDependencies": {
+    "vue": "^2.6.12"
+  }
+}
