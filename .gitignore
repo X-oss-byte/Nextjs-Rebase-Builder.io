@@ -1,0 +1,12 @@
+node_modules
+*.log
+dist
+test-lib/**/*.js
+coverage
+.nyc_output
+.idea
+.prettierignore
+.vscode
+.editorconfig
+.rpt2_cache/
+.cache
